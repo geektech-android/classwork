@@ -3,15 +3,19 @@ package com.akai.geektech.classwork;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ThirdFragment extends Fragment {
+public class ThirdFragment extends BaseTabFragment {
+    private static final String TITLE = "Tab3";
 
-    public static Fragment getInstance() {
+    public static BaseTabFragment getInstance() {
         return new ThirdFragment();
+    }
+
+    public String getTitle() {
+        return TITLE;
     }
 
     @Nullable
