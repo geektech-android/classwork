@@ -1,4 +1,4 @@
-package com.akai.geektech.classwork;
+package com.akai.geektech.classwork.data.model;
 
 import android.arch.persistence.room.PrimaryKey;
 

@@ -3,6 +3,8 @@ package com.akai.geektech.classwork;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
+import com.akai.geektech.classwork.data.db.AppDatabase;
+
 public class App extends Application {
     private static App mInstance;
     private AppDatabase mDatabase;

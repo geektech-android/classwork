@@ -1,7 +1,9 @@
-package com.akai.geektech.classwork;
+package com.akai.geektech.classwork.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.akai.geektech.classwork.R;
 
 public class MainActivity extends AppCompatActivity {
 

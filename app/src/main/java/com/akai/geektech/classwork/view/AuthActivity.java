@@ -1,13 +1,15 @@
-package com.akai.geektech.classwork;
+package com.akai.geektech.classwork.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashActivity extends AppCompatActivity {
+import com.akai.geektech.classwork.R;
+
+public class AuthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_auth);
     }
 }
