@@ -11,24 +11,32 @@
         android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
         android:hint="Email" />
 
     <EditText
         android:id="@+id/edit_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:imeOptions="actionNext"
         android:hint="Password" />
 
     <EditText
         android:id="@+id/edit_fName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="text"
+        android:imeOptions="actionNext"
         android:hint="First name" />
 
     <EditText
         android:id="@+id/edit_sName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="text"
+        android:imeOptions="actionDone"
         android:hint="Second name" />
 
     <Button
