@@ -3,6 +3,7 @@
     package="com.akai.geektech.classwork">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,6 +19,8 @@
         </activity>
         <activity android:name=".view.AuthActivity" />
         <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.RegistrationActivity" />
+        <activity android:name=".view.ProfileActivity"></activity>
     </application>
 
 </manifest>

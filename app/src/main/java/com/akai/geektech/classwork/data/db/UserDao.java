@@ -11,11 +11,11 @@ import com.akai.geektech.classwork.data.model.UserEntity;
 @Dao
 public interface UserDao {
 
-    @Query("SELECT * FROM user WHERE email = :email")
-    UserEntity getByEmail(String email);
+    @Query("SELECT * FROM user WHERE id = :id")
+    UserEntity getById(long id);
 
     @Insert
-    void insert(UserEntity entity);
+    long insert(UserEntity entity);
 
     @Update
     void update(UserEntity entity);

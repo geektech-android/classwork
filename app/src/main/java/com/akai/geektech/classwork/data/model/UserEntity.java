@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "user")
 public class UserEntity {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String fName;
     private String sName;
@@ -15,28 +15,29 @@ public class UserEntity {
     private String phone;
     private String age;
 
-    public UserEntity(String fName, String sName, String email, String password, String phone, String age) {
-        this.fName = fName;
-        this.sName = sName;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.age = age;
+    public UserEntity() {}
+
+    public long getId() {
+        return id;
     }
 
-    public String getfName() {
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFName() {
         return fName;
     }
 
-    public void setfName(String fName) {
+    public void setFName(String fName) {
         this.fName = fName;
     }
 
-    public String getsName() {
+    public String getSName() {
         return sName;
     }
 
-    public void setsName(String sName) {
+    public void setSName(String sName) {
         this.sName = sName;
     }
 
@@ -70,5 +71,43 @@ public class UserEntity {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public static class Builder {
+        private String fName;
+        private String sName;
+        private String email;
+        private String password;
+        private String phone;
+        private String age;
+
+        public Builder first(String fName) {
+            this.fName = fName;
+            return this;
+        }
+
+        public Builder second(String sName) {
+            this.sName = sName;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserEntity build() {
+            UserEntity entity = new UserEntity();
+            entity.fName = this.fName;
+            entity.sName = this.sName;
+            entity.email = this.email;
+            entity.password = this.password;
+            return entity;
+        }
     }
 }

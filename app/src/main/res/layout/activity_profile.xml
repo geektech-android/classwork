@@ -4,34 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    tools:context=".view.AuthActivity">
+    tools:context=".view.ProfileActivity">
 
     <TextView
-        android:id="@+id/text_email"
+        android:id="@+id/text_fName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="xxx@gmail.com"/>
+        tools:text="Glen" />
 
-    <EditText
-        android:id="@+id/edit_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        app:layout_constraintTop_toBottomOf="@id/text_email"/>
-
-    <Button
-        android:id="@+id/btn_signIn"
+    <TextView
+        android:id="@+id/text_sName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in"
-        app:layout_constraintTop_toBottomOf="@id/edit_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/text_fName"
+        app:layout_constraintStart_toStartOf="@id/text_fName"
+        app:layout_constraintEnd_toEndOf="@id/text_fName"
+        tools:text="Jagger"/>
+
+    <Button
+        android:id="@+id/btn_signOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign out"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
