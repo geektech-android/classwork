@@ -13,7 +13,9 @@ public class SplashActivity extends AppCompatActivity {
     private UserService mUserService;
 
     public static Intent getIntent(Context context) {
-        return new Intent(context, SplashActivity.class);
+        Intent intent = new Intent(context, SplashActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
     }
 
     @Override
