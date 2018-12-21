@@ -7,17 +7,13 @@ import com.akai.geektech.classwork.scheduler.Scheduler;
 import com.akai.geektech.classwork.service.ProductService;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
 
 public class ProductServiceImpl implements ProductService {
     private static ProductServiceImpl mInstance;
     private ProductDao mDao;
     private Preferences mPreferences;
     private Scheduler mScheduler;
-    private List<Product> mProductList;
-    private Product mProduct;
-    private long mProductId;
 
     private ProductServiceImpl(ProductDao dao, Preferences preferences, Scheduler scheduler) {
         mDao = dao;
@@ -34,39 +30,25 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-        Future future = runWithFuture(() -> mProductId = mDao.insert(product));
-        futureGet(future);
+        runWithFuture(() -> mDao.insert(product));
     }
 
     @Override
     public Product getProduct(long id) {
-        Future future = runWithFuture(() -> mProduct = mDao.getById(id));
-        futureGet(future);
-        return mProduct;
+        return (Product) runWithFuture(() -> mDao.getById(id));
     }
 
     @Override
     public List<Product> getProducts() {
-        Future future = runWithFuture(() -> mProductList = mDao.getAll());
-        futureGet(future);
-        return mProductList;
+        return (List<Product>) runWithFuture(() -> mDao.getAll());
     }
 
     private void runOnScheduler(Runnable runnable) {
         mScheduler.runOnThread(runnable);
     }
 
-    private Future runWithFuture(Runnable runnable) {
+    private Object runWithFuture(Callable runnable) {
         return mScheduler.runWithFuture(runnable);
     }
 
-    private void futureGet(Future future) {
-        try {
-            future.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-    }
 }

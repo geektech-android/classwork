@@ -6,16 +6,13 @@ import com.akai.geektech.classwork.data.prefs.Preferences;
 import com.akai.geektech.classwork.scheduler.Scheduler;
 import com.akai.geektech.classwork.service.UserService;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
 
 public class UserServiceImpl implements UserService {
     private static UserServiceImpl mInstance;
     private UserDao mDao;
     private Preferences mPreferences;
     private Scheduler mScheduler;
-    private UserEntity mUser;
-    private long mUserId;
 
     private UserServiceImpl(UserDao dao, Preferences preferences, Scheduler scheduler) {
         mDao = dao;
@@ -47,16 +44,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity getUser(long id) {
-        Future future = runWithFuture(() -> mUser = mDao.getById(id));
-        futureGet(future);
-        return mUser;
+        return (UserEntity) runWithFuture(() -> mDao.getById(id));
     }
 
     @Override
     public long saveUser(UserEntity entity) {
-        Future future = runWithFuture(() -> mUserId = mDao.insert(entity));
-        futureGet(future);
-        return mUserId;
+        return (long) runWithFuture(() -> mDao.insert(entity));
     }
 
     @Override
@@ -80,17 +73,7 @@ public class UserServiceImpl implements UserService {
         mScheduler.runOnThread(runnable);
     }
 
-    private Future runWithFuture(Runnable runnable) {
+    private Object runWithFuture(Callable runnable) {
         return mScheduler.runWithFuture(runnable);
-    }
-
-    private void futureGet(Future future) {
-        try {
-            future.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 }

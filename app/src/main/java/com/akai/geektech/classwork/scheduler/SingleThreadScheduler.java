@@ -1,8 +1,10 @@
 package com.akai.geektech.classwork.scheduler;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 public class SingleThreadScheduler implements Scheduler {
     private static final ExecutorService SINGLE_THREAD_EXECUTOR = Executors.newSingleThreadExecutor();
@@ -23,7 +25,17 @@ public class SingleThreadScheduler implements Scheduler {
     }
 
     @Override
-    public Future runWithFuture(Runnable runnable) {
-        return SINGLE_THREAD_EXECUTOR.submit(runnable);
+    public Object runWithFuture(Callable callable) {
+        FutureTask futureTask = new FutureTask<>(callable);
+        SINGLE_THREAD_EXECUTOR.execute(futureTask);
+        Object obj = null;
+        try {
+            obj = futureTask.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }
