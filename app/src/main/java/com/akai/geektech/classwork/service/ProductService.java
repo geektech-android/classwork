@@ -1,14 +1,14 @@
 package com.akai.geektech.classwork.service;
 
-import com.akai.geektech.classwork.data.model.Product;
+import com.akai.geektech.classwork.data.model.ProductEntity;
 
 import java.util.List;
 
 public interface ProductService {
 
-    void addProduct(Product product);
+    void addProduct(ProductEntity entity);
 
-    Product getProduct(long id);
+    ProductEntity getProduct(long id);
 
-    List<Product> getProducts();
+    List<ProductEntity> getProducts();
 }

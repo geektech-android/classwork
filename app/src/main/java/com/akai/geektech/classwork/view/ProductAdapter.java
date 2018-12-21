@@ -8,18 +8,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.akai.geektech.classwork.R;
-import com.akai.geektech.classwork.data.model.Product;
+import com.akai.geektech.classwork.data.model.ProductEntity;
 
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-    private List<Product> mProducts;
+    private List<ProductEntity> mProducts;
 
-    ProductAdapter(List<Product> productList) {
+    ProductAdapter(List<ProductEntity> productList) {
         mProducts = productList;
     }
 
-    public void onProductListUpdated(List<Product> productList) {
+    public void onProductListUpdated(List<ProductEntity> productList) {
         mProducts = productList;
         notifyDataSetChanged();
     }
@@ -33,7 +33,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Product product = mProducts.get(i);
+        ProductEntity product = mProducts.get(i);
         viewHolder.textProductName.setText(product.getName());
     }
 

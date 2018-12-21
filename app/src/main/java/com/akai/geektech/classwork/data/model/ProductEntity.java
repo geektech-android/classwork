@@ -4,7 +4,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity
-public class Product {
+public class ProductEntity {
 
     @PrimaryKey(autoGenerate = true)
     private long id;

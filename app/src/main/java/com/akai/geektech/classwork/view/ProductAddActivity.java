@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import com.akai.geektech.classwork.R;
 import com.akai.geektech.classwork.data.SourceProvider;
-import com.akai.geektech.classwork.data.model.Product;
+import com.akai.geektech.classwork.data.model.ProductEntity;
 import com.akai.geektech.classwork.service.ProductService;
 
 public class ProductAddActivity extends AppCompatActivity {
@@ -35,7 +35,7 @@ public class ProductAddActivity extends AppCompatActivity {
 
     private void onCreateClicked(View view) {
         String name = mEditProductName.getText().toString();
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setName(name);
         mProductService.addProduct(product);
         finish();

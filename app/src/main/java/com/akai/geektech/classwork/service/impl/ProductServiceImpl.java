@@ -1,7 +1,7 @@
 package com.akai.geektech.classwork.service.impl;
 
 import com.akai.geektech.classwork.data.db.ProductDao;
-import com.akai.geektech.classwork.data.model.Product;
+import com.akai.geektech.classwork.data.model.ProductEntity;
 import com.akai.geektech.classwork.data.prefs.Preferences;
 import com.akai.geektech.classwork.scheduler.Scheduler;
 import com.akai.geektech.classwork.service.ProductService;
@@ -29,18 +29,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void addProduct(Product product) {
-        runWithFuture(() -> mDao.insert(product));
+    public void addProduct(ProductEntity entity) {
+        runWithFuture(() -> mDao.insert(entity));
     }
 
     @Override
-    public Product getProduct(long id) {
-        return (Product) runWithFuture(() -> mDao.getById(id));
+    public ProductEntity getProduct(long id) {
+        return (ProductEntity) runWithFuture(() -> mDao.getById(id));
     }
 
     @Override
-    public List<Product> getProducts() {
-        return (List<Product>) runWithFuture(() -> mDao.getAll());
+    public List<ProductEntity> getProducts() {
+        return (List<ProductEntity>) runWithFuture(() -> mDao.getAll());
     }
 
     private void runOnScheduler(Runnable runnable) {

@@ -6,25 +6,25 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.akai.geektech.classwork.data.model.Product;
+import com.akai.geektech.classwork.data.model.ProductEntity;
 
 import java.util.List;
 
 @Dao
 public interface ProductDao {
 
-    @Query("SELECT * FROM product")
-    List<Product> getAll();
+    @Query("SELECT * FROM ProductEntity")
+    List<ProductEntity> getAll();
 
     @Query("SELECT * FROM user WHERE id = :id")
-    Product getById(long id);
+    ProductEntity getById(long id);
 
     @Insert
-    long insert(Product entity);
+    long insert(ProductEntity entity);
 
     @Update
-    void update(Product entity);
+    void update(ProductEntity entity);
 
     @Delete
-    void delete(Product entity);
+    void delete(ProductEntity entity);
 }
